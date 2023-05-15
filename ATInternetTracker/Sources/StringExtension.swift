@@ -31,6 +31,7 @@ SOFTWARE.
 //
 
 import Foundation
+import CryptoKit
 
 /// Properties for extending String object
 extension String {    
@@ -50,7 +51,9 @@ extension String {
     }
     
     var sha256Value: String {
-        return Hash.sha256Value("AT" + self)
+        let base = "AT" + self
+        let hashed = SHA256.hash(data: base.data(using: .utf8)!)
+        return hashed.compactMap { String(format: "%02x", $0) }.joined()
     }
     
     var encrypt: String? {

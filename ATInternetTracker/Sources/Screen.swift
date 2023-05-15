@@ -202,7 +202,6 @@ public class AbstractScreen: BusinessObject {
     func updateContext() {
         commpleteScreenLabel = buildCompleteLabel()
         TechnicalContext.screenName = commpleteScreenLabel
-        Crash.lastScreen(commpleteScreenLabel)
     }
 }
 
